@@ -11,10 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'IndexController@home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index');
+// homestead.app/admin/*
+Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
+    Route::get('/home', 'Admin\HomeController@index');
+});

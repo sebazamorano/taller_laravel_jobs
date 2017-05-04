@@ -10,6 +10,8 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
         <!-- Styles -->
         <style>
             html, body {
@@ -77,17 +79,29 @@
                 </div>
             @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Titulo</th>
+                                    <th>Descripcion</th>
+                                    <th>Sueldo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($trabajos as $trabajo)
+                                <tr>
+                                    <td>{{ $trabajo->titulo }}</td>
+                                    <td>{{ $trabajo->descripcion }}</td>
+                                    <td>{{ $trabajo->sueldo }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    </div>
                 </div>
             </div>
         </div>
