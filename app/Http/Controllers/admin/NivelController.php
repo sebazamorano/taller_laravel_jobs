@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Nivel;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,7 @@ class NivelController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.niveles.index');
     }
 
     /**
@@ -24,7 +25,7 @@ class NivelController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.niveles.create');
     }
 
     /**
@@ -46,7 +47,7 @@ class NivelController extends Controller
      */
     public function show(Nivel $nivel)
     {
-        //
+        
     }
 
     /**
@@ -57,7 +58,7 @@ class NivelController extends Controller
      */
     public function edit(Nivel $nivel)
     {
-        //
+        return view('admin.niveles.edit');
     }
 
     /**

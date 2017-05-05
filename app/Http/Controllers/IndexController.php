@@ -9,7 +9,7 @@ class IndexController extends Controller
 {
     public function home ()
     {
-        $trabajos = Trabajo::all();
+        //$trabajos = Trabajo::all();
 
         return view('welcome', compact('trabajos'));
     }

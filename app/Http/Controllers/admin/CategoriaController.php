@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Categoria;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -14,7 +15,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.categorias.index', ['usuario' => ['name' => 'Pepito']]);
     }
 
     /**
@@ -24,7 +25,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view ('admin.categorias.create');
     }
 
     /**
@@ -57,7 +58,7 @@ class CategoriaController extends Controller
      */
     public function edit(Categoria $categoria)
     {
-        //
+        return view ('admin.categorias.edit');
     }
 
     /**

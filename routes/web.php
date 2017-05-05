@@ -17,4 +17,11 @@ Auth::routes();
 // homestead.app/admin/*
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function () {
     Route::get('/home', 'Admin\HomeController@index');
+    Route::resource('categorias', 'Admin\CategoriaController');
+    Route::resource('tipos', 'Admin\TipoController');
+    Route::resource('niveles', 'Admin\NivelController');
+});
+
+Route::get('prueba', function () {
+	
 });
