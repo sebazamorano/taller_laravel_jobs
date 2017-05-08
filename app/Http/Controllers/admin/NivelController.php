@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NivelRequest;
+use App\Http\Requests\NivelUpdateRequest;
 use App\Nivel;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,9 @@ class NivelController extends Controller
      */
     public function index()
     {
-        return view('admin.niveles.index');
+        $niveles = Nivel::all();
+
+        return view('admin.niveles.index', compact('niveles'));
     }
 
     /**
@@ -31,12 +35,14 @@ class NivelController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param NivelRequest|Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NivelRequest $request)
     {
-        //
+        Nivel::create($request->all());
+
+        return redirect()->route('nivel.index')->with('message', 'nivel creado');
     }
 
     /**
@@ -47,7 +53,7 @@ class NivelController extends Controller
      */
     public function show(Nivel $nivel)
     {
-        
+        return view('nivel.view', compact('nivel'));
     }
 
     /**
@@ -58,19 +64,21 @@ class NivelController extends Controller
      */
     public function edit(Nivel $nivel)
     {
-        return view('admin.niveles.edit');
+        return view('admin.niveles.edit', compact('nivel'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Nivel  $nivel
+     * @param NivelUpdateRequest|Request $request
+     * @param  \App\Nivel $nivel
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Nivel $nivel)
+    public function update(NivelUpdateRequest $request, Nivel $nivel)
     {
-        //
+        $nivel->update($request->all());
+
+        return redirect()->route('nivel.index');
     }
 
     /**
@@ -81,6 +89,8 @@ class NivelController extends Controller
      */
     public function destroy(Nivel $nivel)
     {
-        //
+        $nivel->delete();
+
+        return redirect()->to('nivel.index')->with('message', 'nivel eliminado');
     }
 }

@@ -35,15 +35,22 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                    <a class="navbar-brand" href="{{ route('home.admin') }}">
+                        Trabajos
                     </a>
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
+                        @if (!Auth::guest() && Auth::user()->hasRole('admin'))
                         &nbsp;<li><a href="{{ route('categorias.index') }}">Categorias</a></li>
+                        &nbsp;<li><a href="{{ route('tipos.index') }}">Tipos</a></li>
+                        &nbsp;<li><a href="{{ route('niveles.index') }}">Niveles</a></li>
+                        @endif
+                        @if (!Auth::guest() && Auth::user()->hasRole('user'))
+                        <li><a href="{{ route('new.job') }}">Crear Trabajo</a></li>
+                        @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -77,12 +84,12 @@
                 </div>
             </div>
         </nav>
-
+        <div class="container">
         @yield('content')
+        </div>
     </div>
 
     <!-- Scripts -->
-    <script src="//{{ Request::getHost() }}:6001/socket.io/socket.io.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
 
     @yield('script')

@@ -8,7 +8,7 @@
 			<p>{{ session('mensaje') }}</p>
 		</div>
 		@endif
-		<a href="{{ route('niveles.create') }}" class="btn btn-success">Nuevo Nivel</a>
+		<a href="{{ route('tipos.create') }}" class="btn btn-success">Nuevo Tipo</a>
 		<table class="table table-bordered">
 		  	<thead>
 		  		<th>ID</th>
@@ -17,14 +17,14 @@
 		  		<th></th>
 		  	</thead>
 		  	<tbody>
-				@foreach($niveles as $nivel)
+				@foreach($tipos as $tipo)
 		  		<tr>
-		  			<td>{{ $nivel->id }}</td>
-		  			<td>{{ $nivel->nombre }}</td>
-		  			<td>{{ $nivel->descripcion }}</td>
+		  			<td>{{ $tipo->id }}</td>
+		  			<td>{{ $tipo->nombre }}</td>
+		  			<td>{{ $tipo->descripcion }}</td>
 		  			<td>
-		  				<a href="{{ route('niveles.edit', $nivel) }}" class="btn btn-warning btn-xs">Editar</a>
-		  				<form action="{{ route('niveles.destroy', $nivel) }}" method="post">
+		  				<a href="{{ route('tipos.edit', $tipo) }}" class="btn btn-warning btn-xs">Editar</a>
+		  				<form action="{{ route('tipos.destroy', $tipo) }}" method="post">
 							{{ csrf_field() }}
 							<input type="hidden" name="_method" value="delete">
 							<button class="btn btn-danger btn-xs">Eliminar</button>

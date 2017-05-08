@@ -32,7 +32,7 @@
                                     @empty
                                     <tr>
                                         <td colspan="3">
-                                            <a href="#" class="btn btn-block btn-success">Crea uno aquí</a>
+                                            <a href="{{ route('new.job') }}" class="btn btn-block btn-success">Crea uno aquí</a>
                                         </td>
                                     </tr>
                                     @endforelse

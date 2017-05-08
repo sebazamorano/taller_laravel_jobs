@@ -32,6 +32,7 @@ class HomeController extends Controller
         }
 
         $trabajos = $trabajos->paginate(5);
+
         return view('admin.home', compact('trabajos'));
     }
 }
