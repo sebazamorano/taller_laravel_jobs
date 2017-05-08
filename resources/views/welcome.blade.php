@@ -18,7 +18,6 @@
                 background-color: #fff;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
-                font-weight: 100;
                 height: 100vh;
                 margin: 0;
             }
@@ -64,6 +63,12 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+            .media {
+                box-shadow: 5px 5px 7.8px rgba(146, 146, 146, 0.25);
+                padding: 30px;
+                background: rgba(193, 193, 193, 0.05);
+            }
         </style>
     </head>
     <body>
@@ -79,29 +84,20 @@
                 </div>
             @endif
 
-            <div class="container">
+            <div class="container" style="margin-top: 30px">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Titulo</th>
-                                    <th>Descripcion</th>
-                                    <th>Sueldo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($trabajos as $trabajo)
-                                <tr>
-                                    <td>{{ $trabajo->titulo }}</td>
-                                    <td>{{ $trabajo->descripcion }}</td>
-                                    <td>{{ $trabajo->sueldo }}</td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-
+                    @foreach($trabajos as $trabajo)
+                    <div class="col-lg-8">
+                        <div class="media m-b-md">
+                            <div class="media-body">
+                                <h4 class="media-heading">{{ $trabajo->titulo }}</h4>
+                                <p><strong>{{ $trabajo->user->name }}</strong> - {{ $trabajo->descripcion }}</p>
+                                <p>{{ $trabajo->tipo->nombre }}</p>
+                                <p>{{ $trabajo->ciudad . ', ' . $trabajo->pais}}</p>
+                            </div>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
             </div>
         </div>
