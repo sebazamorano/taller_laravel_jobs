@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'IndexController@home');
+Route::get('/', ['name' => 'home', 'use' => 'IndexController@home']);
 
 Auth::routes();
 // homestead.app/admin/*

@@ -24,6 +24,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('admin.home');
+        $trabajos = auth()->user()->trabajos();
+
+        if (request()->has('sort')) {
+            $trabajos = $trabajos
+                ->orderBy('titulo', request()->get('sort'));
+        }
+
+        $trabajos = $trabajos->paginate(5);
+        return view('admin.home', compact('trabajos'));
     }
 }
