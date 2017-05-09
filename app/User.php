@@ -32,8 +32,11 @@ class User extends Authenticatable
     {
         return $this->hasMany(Trabajo::class, 'user_id', 'id');
     }
-
-    public function hasRole($role)
+    /*
+     * Validar role del usuario
+     * @return bool
+     */
+    public function hasRole(string $role) : bool
     {
         return $this->role == $role;
     }

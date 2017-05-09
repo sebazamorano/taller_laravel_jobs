@@ -70,9 +70,14 @@
                 background: rgba(193, 193, 193, 0.05);
             }
         </style>
+        <script>
+            window.Laravel = {!! json_encode([
+            'csrfToken' => csrf_token(),
+        ]) !!};
+        </script>
     </head>
-    <body>
-        <div class="flex-center position-ref full-height">
+    <body >
+        <div id="app">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -83,23 +88,13 @@
                     @endif
                 </div>
             @endif
-
             <div class="container" style="margin-top: 30px">
                 <div class="row">
-                    @foreach($trabajos as $trabajo)
-                    <div class="col-lg-8">
-                        <div class="media m-b-md">
-                            <div class="media-body">
-                                <h4 class="media-heading">{{ $trabajo->titulo }}</h4>
-                                <p><strong>{{ $trabajo->user->name }}</strong> - {{ $trabajo->descripcion }}</p>
-                                <p>{{ $trabajo->tipo->nombre }}</p>
-                                <p>{{ $trabajo->ciudad . ', ' . $trabajo->pais}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    @endforeach
+                    <home :trabajos="{{ $trabajos->toJson() }}"></home>
                 </div>
             </div>
         </div>
+        <script src="{{ asset('js/app.js') }}"></script>
+
     </body>
 </html>

@@ -18,8 +18,7 @@ class IndexController extends Controller
 
     public function home ()
     {
-        $trabajos = Trabajo::all();
-
+        $trabajos = Trabajo::with(['user', 'tipo'])->paginate(5);
         return view('welcome', compact('trabajos'));
     }
 }

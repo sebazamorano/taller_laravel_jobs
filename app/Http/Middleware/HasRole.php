@@ -18,5 +18,7 @@ class HasRole
         if ($request->user()->hasRole($role)) {
             return $next($request);
         }
+
+        return redirect()->back();
     }
 }

@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Trabajo;
+use App\User;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +16,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        User::created(function ($user) {
+
+        });
+
+        Trabajo::saving(function () {
+            
+        });
     }
 
     /**
